@@ -18,6 +18,7 @@ export const updateIssueRules = [
   body().custom((_value, { req }) => Object.keys(req.body).length > 0).withMessage('Provide at least one field to update'),
 ];
 export const statusRules = [body('status').isString().isIn(ISSUE_STATUSES).withMessage('Choose a valid status')];
+export const priorityRules = [body('priority').isString().isIn(ISSUE_PRIORITIES).withMessage('Choose a valid priority')];
 const listQueryRules = [
   query('page').optional().isInt({ min: 1 }).toInt(),
   query('limit').optional().isInt({ min: 1, max: 50 }).toInt(),

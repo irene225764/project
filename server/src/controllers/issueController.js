@@ -58,6 +58,14 @@ export async function updateIssueStatus(req, res) {
   return res.status(200).json({ success: true, data: issue });
 }
 
+export async function updateIssuePriority(req, res) {
+  const issue = await Issue.findById(req.params.id);
+  if (!issue) throw new AppError(404, 'Issue not found');
+  issue.priority = req.body.priority;
+  await issue.save();
+  return res.status(200).json({ success: true, data: issue });
+}
+
 export async function deleteIssue(req, res) {
   const filter = { _id: req.params.id };
   if (req.user.role !== 'admin') filter.reportedBy = userId(req.user);
