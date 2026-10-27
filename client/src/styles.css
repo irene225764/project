@@ -1,0 +1,13 @@
+:root {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: #202c28;
+  background: #f6f7f2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+.app-shell { max-width: 72rem; margin: 0 auto; padding: 4rem 1.5rem; }
+.eyebrow { color: #527b65; font-size: .75rem; font-weight: 700; letter-spacing: .12em; }
+h1 { max-width: 12ch; font-family: Georgia, serif; font-size: clamp(2.5rem, 8vw, 5rem); line-height: .98; }
