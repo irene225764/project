@@ -2,6 +2,8 @@
 
 CampusFix is a campus facilities issue-reporting system. Students and staff can report and track their own facility issues; admins can triage the campus-wide queue.
 
+See the [Software Requirements Specification](docs/SRS.md) for detailed functional, interface, data, security, and acceptance requirements.
+
 ## Features
 
 - Account registration and login with bcrypt password hashing and JWT authentication.
