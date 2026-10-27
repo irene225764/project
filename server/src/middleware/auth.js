@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import asyncHandler from './asyncHandler.js';
 import { AppError } from './errors.js';
+import User from '../models/User.js';
 
 export const requireAuth = asyncHandler(async (req, _res, next) => {
   const token = req.headers.authorization?.startsWith('Bearer ')
@@ -8,7 +9,9 @@ export const requireAuth = asyncHandler(async (req, _res, next) => {
     : null;
   if (!token) throw new AppError(401, 'Authentication required');
   const payload = jwt.verify(token, process.env.JWT_SECRET);
-  req.user = { id: payload.sub, role: payload.role };
+  const user = await User.findById(payload.sub).select('name email role');
+  if (!user) throw new AppError(401, 'Account no longer exists');
+  req.user = user;
   next();
 });
 
